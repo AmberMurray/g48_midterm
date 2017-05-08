@@ -29,18 +29,18 @@ router.get('/:id', (req, res, next) => {
   })
 })
 
-// //edit a message
-// router.get('/:id/edit', (req, res, next) => {
-//   let id = req.params.id
-//
-//   db('messages')
-//   .where('id', id)
-//   .select('*')
-//   .first()
-//   .then(message => {
-//     res.render('edit', { message })
-//   })
-// })
+//edit a message
+router.get('/:id/edit', (req, res, next) => {
+  let id = req.params.id
+
+  knex('authors')
+  .where('id', id)
+  .select('*')
+  .first()
+  .then(author => {
+    res.render('authors/edit', { author })
+  })
+})
 
 // //create a new message
 // router.post('/', (req, res, next) => {

@@ -1,13 +1,12 @@
 <div class="container"></div>
 <div class="container">
-  <!-- {{> subhead}}
-  {{> subnav}} -->
+  {{> subhead}}
+  {{> subnav}}
 
   <div class="row">
     <div class="col-sm-4 col-sm-offset-4">
-      <h2>Add New Author</h2>
+      <h2>Edit {{ author.first_name}} {{author.last_name}}</h2>
       <br>
-
       <form method="POST" action="/authors/{{#if author.id }}{{ author.id }}?_method=PUT{{/if}}">
         <div class="form-group">
           <input type="text" name="first_name" class="form-control" placeholder="First Name" value="{{ author.first_name }}" required autofocus>
@@ -22,7 +21,7 @@
           <textarea class="form-control" name="biography" rows="10" placeholder="Biography" value="{{ author.biography }}" required></textarea>
         </div>
         <br>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Add Author</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Add Changes</button>
       </form>
     </div>
   </div>
