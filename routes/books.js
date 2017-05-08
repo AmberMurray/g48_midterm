@@ -29,18 +29,18 @@ router.get('/:id', (req, res, next) => {
   })
 })
 
-// //edit a message
-// router.get('/:id/edit', (req, res, next) => {
-//   let id = req.params.id
-//
-//   db('messages')
-//   .where('id', id)
-//   .select('*')
-//   .first()
-//   .then(message => {
-//     res.render('edit', { message })
-//   })
-// })
+// GRAB A BOOK TO EDIT
+router.get('/:id/edit', (req, res, next) => {
+  let id = req.params.id
+
+  knex('books')
+  .where('id', id)
+  .select('*')
+  .first()
+  .then(book => {
+    res.render('books/edit', { book })
+  })
+})
 
 // //create a new message
 // router.post('/', (req, res, next) => {
@@ -64,26 +64,28 @@ router.get('/:id', (req, res, next) => {
 //   }
 // })
 //
-// //update an existing message
-// router.put('/:id', (req, res, next) => {
-//   let id = req.params.id
-//
-//   let message = {
-//     name: req.body.name,
-//     message: req.body.message
-//   }
-//
-//   db('messages')
-//   .update(message, '*')
-//   .where('id', id)
-//   .then(message => {
-//     res.redirect('/')
-//   })
-//   .catch(error => {
-//     res.send(error)
-//   })
-// })
-//
+// UPDATE AN EXISTING BOOK
+router.put('/:id', (req, res, next) => {
+  let id = req.params.id
+
+  let book = {
+    title: req.body.title,
+    genre: req.body.genre,
+    pic_url: req.body.pic_url,
+    description: req.body.description
+  }
+
+  knex('books')
+  .update(book, '*')
+  .where('id', id)
+  .then(book => {
+    res.redirect('/books')
+  })
+  .catch(error => {
+    res.send(error)
+  })
+})
+
 // DELETE A BOOK
 router.delete('/:id', (req,res, next) => {
   let id = req.params.id

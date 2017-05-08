@@ -29,7 +29,7 @@ router.get('/:id', (req, res, next) => {
   })
 })
 
-//edit a message
+// GRAB AN AUTHOR TO EDIT
 router.get('/:id/edit', (req, res, next) => {
   let id = req.params.id
 
