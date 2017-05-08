@@ -22,8 +22,8 @@ app.set('view engine', 'hbs')
 // to view partials!!
 hbs.registerPartials(__dirname + '/views/partials')
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(logger('dev'))
 app.use(methodOverride('_method'))
 app.use(bodyParser.json())
