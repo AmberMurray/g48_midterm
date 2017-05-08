@@ -13,6 +13,7 @@ const hbs = require('hbs')
 
 const index = require('./routes/index')
 const books = require('./routes/books')
+const authors = require('./routes/authors')
 
 
 // view engine setup
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', index)
 app.use('/books', books)
+app.use('/authors', authors)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

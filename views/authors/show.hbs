@@ -1,0 +1,27 @@
+<div class="container"></div>
+
+<div class="container">
+  <div class="row">
+
+    {{> subhead}}
+    {{> subnav}}
+
+    <div class="col-sm-10 col-sm-offset-2">
+      <div class="row">
+        <div class="col-md-2">
+          <img class="img-responsive author-image" src="{{ author.pic_url }}">
+        </div>
+        <div class="col-md-6 col-md-offset-1">
+          <h3>{{ author.first_name}} {{ author.last_name}}</h3>
+          <p>{{ author.biography }}</p>
+          <p><strong>Books:</strong></p>
+          <ol>
+            <li><a href="/books/1">Python In A Nutshell</a></li>
+          </ol>
+          {{> authorseditdelete }}
+        </div>
+      </div>
+      <br><br>
+    </div>
+  </div>
+</div>

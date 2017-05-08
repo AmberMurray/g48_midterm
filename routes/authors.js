@@ -4,28 +4,28 @@ var knex = require('../db/connection')
 
 // GET ALL BOOKS
 router.get('/', (req, res, next) => {
-  knex('books')
+  knex('authors')
   .select('*')
- .then(books => {
-   res.render('books/index', { books })
+ .then(authors => {
+   res.render('authors/index', { authors })
  })
 })
 
 // GO TO THE ADD NEW BOOK FORM
 router.get('/new', (request, response) => {
-  response.render('books/new')
+  response.render('authors/new')
 })
 
 //SHOW ONE BOOK
 router.get('/:id', (req, res, next) => {
   let id = req.params.id
 
-  knex('books')
+  knex('authors')
   .where('id', id)
   .select('*')
   .first()
-  .then(book => {
-    res.render('books/show', { book })
+  .then(author => {
+    res.render('authors/show', { author })
   })
 })
 
@@ -84,15 +84,15 @@ router.get('/:id', (req, res, next) => {
 //   })
 // })
 //
-// DELETE A BOOK
+// DELETE AN AUTHOR
 router.delete('/:id', (req,res, next) => {
   let id = req.params.id
 
-  knex('books')
+  knex('authors')
   .where('id', id)
   .del()
-  .then(book => {
-    res.redirect('/books')
+  .then(author => {
+    res.redirect('/authors')
   })
   .catch(error => {
     res.send(error)
