@@ -1,0 +1,27 @@
+<div class="container"></div>
+<div class="container">
+  {{> subhead}}
+  {{> subnav}}
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-md-4 col-md-offset-1">
+          <img class="img-responsive book-image" src="{{ book.pic_url }}">
+        </div>
+        <div class="col-md-6">
+          <h3>{{ book.title }}</h3>
+          <h4>{{ book.genre }}</h4>
+          <p>{{ book.description }}</p>
+          <p><strong>Authors:</strong></p>
+          <ol>
+            <li><a href="/authors/1">Ann&nbsp;Ravenscroft</a></li>
+            <li><a href="/authors/2">Anna&nbsp;Ravenscroft</a></li>
+          </ol>
+
+          {{> bookeditdelete }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
