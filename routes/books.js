@@ -42,28 +42,25 @@ router.get('/:id/edit', (req, res, next) => {
   })
 })
 
-// //create a new message
-// router.post('/', (req, res, next) => {
-//   let newMsg = {
-//     name: req.body.name,
-//     message: req.body.message
-//   }
-//
-//   // check to see if a name has even been passed to you
-//   if (!(newMsg.name)) {
-//     res.render('new', { error: 'Please include your name' })
-//   } else {
-//     db('messages')
-//     .insert(newMsg, '*')
-//     .then(message => {
-//       res.redirect('/')
-//     })
-//     .catch(error => {
-//       res.send(error)
-//     })
-//   }
-// })
-//
+// CREATE A NEW BOOK
+router.post('/', (req, res, next) => {
+  let book = {
+    title: req.body.title,
+    genre: req.body.genre,
+    pic_url: req.body.pic_url,
+    description: req.body.description
+  }
+
+    knex('books')
+    .insert(book, '*')
+    .then(book => {
+      res.redirect('/books')
+    })
+    .catch(error => {
+      res.send(error)
+    })
+})
+
 // UPDATE AN EXISTING BOOK
 router.put('/:id', (req, res, next) => {
   let id = req.params.id

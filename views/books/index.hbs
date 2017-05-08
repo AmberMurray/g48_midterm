@@ -14,19 +14,32 @@
         </div>
         <div class="col-md-6 col-md-offset-1">
           <h3><a href="/books/{{ this.id }}">{{ this.title }}</a></h3
-          <h4>{{ this.genre }}</h4>
-          <p>{{ this.description }}</p><br>
-          <strong>Authors:</strong>
-          <ol>
-            <li><a href="/authors/1">Ann&nbsp;Ravenscroft</a></li>
-            <li><a href="/authors/2">Anna&nbsp;Ravenscroft</a></li>
-          </ol>
+            <h4>{{ this.genre }}</h4>
+            <p>{{ this.description }}</p><br>
+            <strong>Authors:</strong>
+            <ol>
+              <li><a href="/authors/1">Ann&nbsp;Ravenscroft</a></li>
+              <li><a href="/authors/2">Anna&nbsp;Ravenscroft</a></li>
+            </ol>
 
-          {{> bookeditdelete }}
+            <div class="btn-group-sm" role="group">
+              <a href="/books/{{ this.id }}/edit"
+              class="btn btn-sm btn-success"
+              type="submit"
+              name="edit">Edit</a>
+
+              <form method="POST" action="/books/{{ this.id }}?_method=DELETE">
+                <input
+                class="btn btn-sm btn-danger"
+                type="submit"
+                name="delete"
+                value="Delete">
+              </form>
+            </div>
+          </div>
         </div>
+        <br><br>
+        {{/each}}
       </div>
-      <br><br>
-      {{/each}}
     </div>
   </div>
-</div>

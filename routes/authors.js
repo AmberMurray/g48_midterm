@@ -6,9 +6,9 @@ var knex = require('../db/connection')
 router.get('/', (req, res, next) => {
   knex('authors')
   .select('*')
- .then(authors => {
-   res.render('authors/index', { authors })
- })
+  .then(authors => {
+    res.render('authors/index', { authors })
+  })
 })
 
 // GO TO THE ADD NEW BOOK FORM
@@ -51,19 +51,14 @@ router.post('/', (req, res, next) => {
     biography: req.body.biography
   }
 
-  // check to see if a name has even been passed to you
-  if (!(author.first_name || author.last_name)) {
-    res.render('new', { error: 'Please include a first and last name' })
-  } else {
-    knex('authors')
-    .insert(author, '*')
-    .then(author => {
-      res.redirect('/authors')
-    })
-    .catch(error => {
-      res.send(error)
-    })
-  }
+  knex('authors')
+  .insert(author, '*')
+  .then(author => {
+    res.redirect('/authors')
+  })
+  .catch(error => {
+    res.send(error)
+  })
 })
 
 // UPDATE AN EXITING AUTHOR

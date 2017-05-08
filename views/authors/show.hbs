@@ -18,7 +18,20 @@
           <ol>
             <li><a href="/books/1">Python In A Nutshell</a></li>
           </ol>
-          {{> authorseditdelete }}
+          <div class="btn-group-sm" role="group">
+            <a href="/authors/{{ author.id }}/edit"
+            class="btn btn-sm btn-success"
+            type="submit"
+            name="edit">Edit</a>
+
+            <form method="POST" action="/authors/{{ author.id }}?_method=DELETE">
+              <input
+              class="btn btn-sm btn-danger"
+              type="submit"
+              name="delete"
+              value="Delete">
+            </form>
+          </div>
         </div>
       </div>
       <br><br>
