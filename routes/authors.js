@@ -64,26 +64,28 @@ router.get('/:id/edit', (req, res, next) => {
 //   }
 // })
 //
-// //update an existing message
-// router.put('/:id', (req, res, next) => {
-//   let id = req.params.id
-//
-//   let message = {
-//     name: req.body.name,
-//     message: req.body.message
-//   }
-//
-//   db('messages')
-//   .update(message, '*')
-//   .where('id', id)
-//   .then(message => {
-//     res.redirect('/')
-//   })
-//   .catch(error => {
-//     res.send(error)
-//   })
-// })
-//
+// UPDATE AN EXITING AUTHOR
+router.put('/:id', (req, res, next) => {
+  let id = req.params.id
+
+  let author = {
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    pic_url: req.body.pic_url,
+    biography: req.body.biography
+  }
+
+  knex('authors')
+  .update(author, '*')
+  .where('id', id)
+  .then(author => {
+    res.redirect('/authors')
+  })
+  .catch(error => {
+    res.send(error)
+  })
+})
+
 // DELETE AN AUTHOR
 router.delete('/:id', (req,res, next) => {
   let id = req.params.id
