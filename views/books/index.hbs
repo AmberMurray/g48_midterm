@@ -1,0 +1,96 @@
+
+<div class="container"></div>
+
+
+<div class="container">
+
+
+  <!-- <script type="text/javascript">
+  var genres = "Python,JavaScript,Ruby,Computer Science,Java";
+</script> -->
+
+<div class="row">
+  <div class="col-sm-12">
+    <h1 class="page-header">Galvanize Reads<small>&nbsp;Books</small></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 portfolio-item">
+    <a href="/books">
+      <img class="img-responsive" src="http://placehold.it/700x100/5bc0de/000000?text=Books">
+    </a>
+  </div>
+  <div class="col-md-6 portfolio-item">
+    <a href="/authors">
+      <img class="img-responsive" src="http://placehold.it/700x100/5cb85c/000000?text=Authors">
+    </a>
+  </div>
+</div>
+
+<br><br>
+
+<div class="row">
+  <div class="col-md-2">
+    <h2>Total Books:&nbsp;<span><em>11</em></span></h2>
+
+    <h2>Filter:</h2>
+    <br>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Genre<span class="caret"></span></button>
+      <ul class="dropdown-menu">
+
+        <li id="genre" class="genre">&nbsp;Python</li>
+
+        <li id="genre" class="genre">&nbsp;JavaScript</li>
+
+        <li id="genre" class="genre">&nbsp;Ruby</li>
+
+        <li id="genre" class="genre">&nbsp;Computer Science</li>
+
+        <li id="genre" class="genre">&nbsp;Java</li>
+
+      </ul>
+    </div>
+    <br>
+    <h2>Search:</h2>
+    <form>
+      <div class="form-group">
+        <input type="text" class="form-control" id="search-books" placeholder="Search (genre)">
+      </div>
+    </form>
+    <br><br>
+    <button class="btn btn-default remove-filter" id="remove-filter">Remove Filter</button>
+
+    <br><br><br>
+  </div>
+
+  <div class="col-md-10">
+
+    <h3 class="no-book-results" id="no-results">No books!</h3>
+
+    <div class="book" data-book-genre="Python">
+      <div class="row">
+        <div class="col-md-4">
+          <img class="img-responsive book-image" src="https://s3-us-west-2.amazonaws.com/assessment-images/galvanize_reads/photos/python_in_a_nutshell.jpg">
+        </div>
+        <div class="col-md-6 col-md-offset-1">
+          <h3><a href="/books/1">Python In A Nutshell</a></h3>
+          <h4>Python</h4>
+          <p>This book offers Python programmers one place to look when they need help remembering or deciphering the syntax of this open source language and its many powerful but scantily documented modules. This comprehensive reference guide makes it easy to look up the most frequently needed information--not just about the Python language itself, but also the most frequently used parts of the standard library and the most important third-party extensions.</p>
+          <p><strong>Authors:</strong></p>
+          <ol>
+
+            <li><a href="/authors/1">Ann&nbsp;Ravenscroft</a></li>
+
+            <li><a href="/authors/2">Anna&nbsp;Ravenscroft</a></li>
+
+          </ol>
+          <div class="btn-group-lg" role="group">
+            <a class="btn btn-success" href="/books/1/edit" role="button">Edit</a>
+            <button type="button" data-book-id="1" class="btn btn-danger remove-book">Remove</button>
+          </div>
+        </div>
+      </div>
+      <br><br>
+    </div>
