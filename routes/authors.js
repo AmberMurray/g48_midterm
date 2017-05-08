@@ -42,28 +42,30 @@ router.get('/:id/edit', (req, res, next) => {
   })
 })
 
-// //create a new message
-// router.post('/', (req, res, next) => {
-//   let newMsg = {
-//     name: req.body.name,
-//     message: req.body.message
-//   }
-//
-//   // check to see if a name has even been passed to you
-//   if (!(newMsg.name)) {
-//     res.render('new', { error: 'Please include your name' })
-//   } else {
-//     db('messages')
-//     .insert(newMsg, '*')
-//     .then(message => {
-//       res.redirect('/')
-//     })
-//     .catch(error => {
-//       res.send(error)
-//     })
-//   }
-// })
-//
+// CREATE A NEW AUTHOR
+router.post('/', (req, res, next) => {
+  let author = {
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    pic_url: req.body.pic_url,
+    biography: req.body.biography
+  }
+
+  // check to see if a name has even been passed to you
+  if (!(author.first_name || author.last_name)) {
+    res.render('new', { error: 'Please include a first and last name' })
+  } else {
+    knex('authors')
+    .insert(author, '*')
+    .then(author => {
+      res.redirect('/authors')
+    })
+    .catch(error => {
+      res.send(error)
+    })
+  }
+})
+
 // UPDATE AN EXITING AUTHOR
 router.put('/:id', (req, res, next) => {
   let id = req.params.id
