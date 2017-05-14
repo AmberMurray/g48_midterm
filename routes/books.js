@@ -5,10 +5,23 @@ var knex = require('../db/connection')
 // GET ALL BOOKS
 router.get('/', (req, res, next) => {
   knex('books')
-  .select('*')
- .then(books => {
-   res.render('books/index', { books })
- })
+  .then(books => {
+    console.log(books);
+    knex('authors_and_books')
+    .innerJoin('books', 'book_id', 'books.id')
+    .select('author_id')
+    .then(result => {
+      console.log(result);
+      let authorId = result
+      knex('authors')
+      .select('*')
+      .where('authors.id as authors_id', authorId)
+      .then(author => {
+        console.log(author);
+        res.render('books/index', { books, author })
+      })
+    })
+  })
 })
 
 // GO TO THE ADD NEW BOOK FORM
@@ -51,14 +64,14 @@ router.post('/', (req, res, next) => {
     description: req.body.description
   }
 
-    knex('books')
-    .insert(book, '*')
-    .then(book => {
-      res.redirect('/books')
-    })
-    .catch(error => {
-      res.send(error)
-    })
+  knex('books')
+  .insert(book, '*')
+  .then(book => {
+    res.redirect('/books')
+  })
+  .catch(error => {
+    res.send(error)
+  })
 })
 
 // UPDATE AN EXISTING BOOK
