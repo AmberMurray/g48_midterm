@@ -21,11 +21,25 @@ router.get('/:id', (req, res, next) => {
   let id = req.params.id
 
   knex('authors')
-  .where('id', id)
   .select('*')
+  .where('id', id)
   .first()
-  .then(author => {
-    res.render('authors/show', { author })
+  .then(authorInfo => {
+    knex('authors_and_books')
+    .innerJoin('books', 'books.id', 'authors_and_books.book_id')
+    .select('*')
+    .where('authors_and_books.author_id', authorInfo.id)
+    .then(book => {
+      let author = {
+        id: authorInfo.id,
+        first_name: authorInfo.first_name,
+        last_name: authorInfo.last_name,
+        biography: authorInfo.biography,
+        pic_url: authorInfo.pic_url,
+        bookArray: book
+      }
+      res.render('authors/show', { author, book })
+    })
   })
 })
 

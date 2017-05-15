@@ -16,7 +16,9 @@
           <p>{{ author.biography }}</p>
           <p><strong>Books:</strong></p>
           <ol>
-            <li><a href="/books/1">Python In A Nutshell</a></li>
+            {{#each book}}
+            <li><a href="/books/{{this.id}}">{{this.title}}</a></li>
+            {{/each}}
           </ol>
           <div class="btn-group-sm" role="group">
             <a href="/authors/{{ author.id }}/edit"

@@ -7,7 +7,7 @@
     {{> subnav}}
 
     <div class="col-md-10 col-md-offset-1">
-      {{#each books}}
+      {{#each book}}
       <div class="row centered">
         <div class="col-md-4">
           <img class="img-responsive" src="{{ this.pic_url }}">
@@ -16,12 +16,7 @@
           <h3><a href="/books/{{ this.id }}">{{ this.title }}</a></h3
             <h4>{{ this.genre }}</h4>
             <p>{{ this.description }}</p><br>
-            <strong>Authors:</strong>
-            <ol>
-              <li><a href="/authors/1">Ann&nbsp;Ravenscroft</a></li>
-              <li><a href="/authors/2">Anna&nbsp;Ravenscroft</a></li>
-            </ol>
-
+      
             <div class="btn-group-sm" role="group">
               <a href="/books/{{ this.id }}/edit"
               class="btn btn-sm btn-success"

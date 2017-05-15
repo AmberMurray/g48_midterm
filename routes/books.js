@@ -1,26 +1,13 @@
-var express = require('express')
-var router = express.Router()
-var knex = require('../db/connection')
+const express = require('express')
+const router = express.Router()
+const knex = require('../db/connection')
 
 // GET ALL BOOKS
 router.get('/', (req, res, next) => {
   knex('books')
-  .then(books => {
-    console.log(books);
-    knex('authors_and_books')
-    .innerJoin('books', 'book_id', 'books.id')
-    .select('author_id')
-    .then(result => {
-      console.log(result);
-      let authorId = result
-      knex('authors')
-      .select('*')
-      .where('authors.id as authors_id', authorId)
-      .then(author => {
-        console.log(author);
-        res.render('books/index', { books, author })
-      })
-    })
+  .select('*')
+  .then(book => {
+      res.render('books/index', { book })
   })
 })
 
@@ -34,11 +21,25 @@ router.get('/:id', (req, res, next) => {
   let id = req.params.id
 
   knex('books')
-  .where('id', id)
   .select('*')
+  .where('id', id)
   .first()
-  .then(book => {
-    res.render('books/show', { book })
+  .then(bookInfo => {
+    knex('authors_and_books')
+    .innerJoin('authors', 'authors.id', 'authors_and_books.author_id')
+    .select('*')
+    .where('authors_and_books.book_id', bookInfo.id)
+    .then(author => {
+      let book = {
+        id: bookInfo.id,
+        title: bookInfo.title,
+        genre: bookInfo.genre,
+        description: bookInfo.description,
+        pic_url: bookInfo.pic_url,
+        authorArray: author
+      }
+      res.render('books/show', { book, author})
+    })
   })
 })
 

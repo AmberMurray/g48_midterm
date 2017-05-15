@@ -15,8 +15,9 @@
           <p>{{ book.description }}</p>
           <p><strong>Authors:</strong></p>
           <ol>
-            <li><a href="/authors/1">Ann&nbsp;Ravenscroft</a></li>
-            <li><a href="/authors/2">Anna&nbsp;Ravenscroft</a></li>
+            {{#each author}}
+            <li><a href="/authors/{{this.id}}">{{this.first_name}} {{this.last_name}}</a></li>
+            {{/each}}
           </ol>
 
           <div class="btn-group-sm" role="group">
@@ -25,7 +26,7 @@
             type="submit"
             name="edit">Edit</a>
 
-            <form method="POST" action="/books/{{ book.id }}?_method=DELETE">
+            <form method="POST" action="/books/{{ this.id }}?_method=DELETE">
               <input
               class="btn btn-sm btn-danger"
               type="submit"
